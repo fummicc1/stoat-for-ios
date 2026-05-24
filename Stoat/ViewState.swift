@@ -487,6 +487,8 @@ public class ViewState: ObservableObject {
 
     /// A successful result here means pending (the session has been destroyed but the client still has data cached)
     func signOut() async -> Result<(), UserStateError>  {
+        _ = await http.revokeNotificationToken()
+        ViewState.application?.unregisterForRemoteNotifications()
         let status = try? await http.signout().get()
         guard let status = status else { return .failure(.signOutError)}
         self.ws?.stop()

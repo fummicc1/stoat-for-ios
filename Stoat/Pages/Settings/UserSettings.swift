@@ -12,7 +12,7 @@ import Alamofire // literally just for types
 import UniformTypeIdentifiers
 
 
-let log = Logger(subsystem: "app.revolt.chat", category: "UserSettingsViews")
+let log = Logger(subsystem: "chat.stoat.app", category: "UserSettingsViews")
 
 func generateTOTPUrl(secret: String, email: String) -> String {
     return "otpauth://totp/Stoat:\(email)?secret=\(secret)&issuer=Stoat"
